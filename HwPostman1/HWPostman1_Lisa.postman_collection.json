@@ -1,0 +1,343 @@
+{
+	"info": {
+		"_postman_id": "8af6ed11-23a8-4571-ae8b-a0fe65ae823e",
+		"name": "HWPostman1_Lisa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5005/get_method?name=Lisa&age=25",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"get_method"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Lisa"
+						},
+						{
+							"key": "age",
+							"value": "25"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Lisa",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "25",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "600",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/user_info_3?name=lisa&age=25&salary=600",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"user_info_3"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "lisa"
+						},
+						{
+							"key": "age",
+							"value": "25"
+						},
+						{
+							"key": "salary",
+							"value": "600"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5005/object_info_1?name=Lisa&age=25&weight=50",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"object_info_1"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Lisa"
+						},
+						{
+							"key": "age",
+							"value": "25"
+						},
+						{
+							"key": "weight",
+							"value": "50"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5005/object_info_2?name=Lisa&age=25&salary=600",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"object_info_2"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Lisa"
+						},
+						{
+							"key": "age",
+							"value": "25"
+						},
+						{
+							"key": "salary",
+							"value": "600"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "lisa",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "25",
+							"type": "text"
+						},
+						{
+							"key": "selary",
+							"value": "250",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/object_info_3?name=lisa&age=25&salary=100",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"object_info_3"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "lisa"
+						},
+						{
+							"key": "age",
+							"value": "25"
+						},
+						{
+							"key": "salary",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.name).to.eql('lisa');\r",
+							"});\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"vaz resp_age = jsonData.age;\r",
+							"vaz resp_name = jsonData.name;\r",
+							"vaz resp_salary_100 = jsonData.salary[0];\r",
+							"\r",
+							"console.log(\"100500\");\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5005/object_info_4?name=lisa&age=25&salary=100",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"object_info_4"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "lisa"
+						},
+						{
+							"key": "age",
+							"value": "25"
+						},
+						{
+							"key": "salary",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.name).to.eql('lisa');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "lisa",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "25",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "100",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/user_info_2",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

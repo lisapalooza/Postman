@@ -1,0 +1,384 @@
+{
+	"info": {
+		"_postman_id": "f56b6da4-5259-4944-be4c-9c4d83310142",
+		"name": "HWPostman2_Lisa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"This is the first responce from server!\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"This is the first responce from server!\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}first",
+					"host": [
+						"{{url}}first"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"let jsonData = pm.response.json();\r",
+							"let req = request.data;\r",
+							"\r",
+							"pm.test(\"Your test Name\", function () {\r",
+							"   pm.expect(jsonData.name).to.eql('lisa');\r",
+							"});\r",
+							"pm.test(\"Your test Age\", function () {\r",
+							"pm.expect(jsonData.age).to.eql('25')\r",
+							"});\r",
+							"pm.test(\"Your test Salary\", function () {\r",
+							"   pm.expect(jsonData.salary).to.eql(1000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Name Res = Name Req\", function () {\r",
+							"pm.expect(jsonData.name).to.eql(req.name)\r",
+							"});\r",
+							"pm.test(\"Age Res = Age Req\", function () {\r",
+							"pm.expect(jsonData.age).to.eql(req.age)\r",
+							"});\r",
+							"pm.test(\"Salary Res = Salary Req\", function () {\r",
+							"pm.expect(jsonData.salary).to.eql(+req.salary)\r",
+							"});\r",
+							"\r",
+							"console.log(jsonData.family);\r",
+							"\r",
+							"pm.test(\"Check 1.5 year Salary\", function () {\r",
+							"pm.expect(jsonData.family.u_salary_1_5_year).to.eql(req.salary * 4)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "lisa",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "25",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "1000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}user_info_3",
+					"host": [
+						"{{url}}user_info_3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"let jsonData = pm.response.json();\r",
+							"let req = pm.request.url.query.toObject();\r",
+							"\r",
+							"pm.test(\"Res Age = Req Age\", function () {\r",
+							"   pm.expect(jsonData.age).to.eql(req.age);\r",
+							"});\r",
+							"pm.test(\"Res Name = Req Name\", function () {\r",
+							"    pm.expect(jsonData.name).to.eql(req.name);\r",
+							"});\r",
+							"pm.test(\"Res Salary = Req Salary\", function () {\r",
+							"    pm.expect(jsonData.salary).to.eql(+req.salary);\r",
+							"});\r",
+							"\r",
+							"console.log(jsonData.family);\r",
+							"\r",
+							"pm.test('Check dogs name', function() {\r",
+							"  pm.expect(jsonData.family.pets.dog).to.have.property('name');\r",
+							"});\r",
+							"pm.test('Check dogs age', function() {\r",
+							"  pm.expect(jsonData.family.pets.dog).to.have.property('age');\r",
+							"});\r",
+							"pm.test(\"Dog name eql test\", function () {\r",
+							"    pm.expect(jsonData.family.pets.dog.name).to.eql('Luky');\r",
+							"});\r",
+							"pm.test(\"Dog age eql test\", function () {\r",
+							"    pm.expect(jsonData.family.pets.dog.age).to.eql(4);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{url}}object_info_3?name=lisa&age=25&salary=1000",
+					"host": [
+						"{{url}}object_info_3"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "lisa"
+						},
+						{
+							"key": "age",
+							"value": "25"
+						},
+						{
+							"key": "salary",
+							"value": "1000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"let jsonData = pm.response.json();\r",
+							"let req = pm.request.url.query.toObject();\r",
+							"\r",
+							"pm.test(\"Res Name = Req Name\", function () {\r",
+							"   pm.expect(jsonData.name).to.eql(req.name);\r",
+							"});\r",
+							"pm.test (\"Res Age = Req Age\", function () {\r",
+							"    pm.expect(jsonData.age).to.eql(+req.age)\r",
+							"});\r",
+							"\r",
+							"  console.log(req.salary);\r",
+							"  console.log(jsonData.salary);\r",
+							"\r",
+							"  console.log(jsonData.salary[0]);\r",
+							"  console.log(jsonData.salary[1]);\r",
+							"  console.log(jsonData.salary[2]);\r",
+							"\r",
+							"pm.test (\"Your test SalaryEql0\", function () {\r",
+							"    pm.expect(jsonData.salary[0]).to.eql(+req.salary)\r",
+							"});\r",
+							"pm.test (\"Your test SalaryEql1\", function () {\r",
+							"    pm.expect(+jsonData.salary[1]).to.eql(req.salary * 2)\r",
+							"});\r",
+							"pm.test (\"Your test SalaryEql2\", function () {\r",
+							"    pm.expect(+jsonData.salary[2]).to.eql(req.salary * 3)\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"name\", \"lisa\");\r",
+							"pm.environment.set(\"age\", 25);\r",
+							"pm.environment.set(\"salary\", 1000);\r",
+							"\r",
+							"for (let i = 0; i < 3; i++){\r",
+							"    console.log(jsonData.salary[i]);\r",
+							"};\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{url}}object_info_4?name={{name}}&age={{age}}&salary={{salary}}",
+					"host": [
+						"{{url}}object_info_4"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "{{name}}"
+						},
+						{
+							"key": "age",
+							"value": "{{age}}"
+						},
+						{
+							"key": "salary",
+							"value": "{{salary}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\"), function () {\r",
+							"    pm.response.to.have.status(200)\r",
+							"};\r",
+							"let jsonData = pm.response.json();\r",
+							"let req = request.data;\r",
+							"\r",
+							"\r",
+							"pm.test('Has data start qa salary', function() {\r",
+							"  pm.expect(jsonData).to.have.property(\"start_qa_salary\");\r",
+							"});\r",
+							"pm.test('Has data qa salary 6 months', function() {\r",
+							"  pm.expect(jsonData).to.have.property(\"qa_salary_after_6_months\");\r",
+							"});\r",
+							"pm.test('Has data qa salary 12 months', function() {\r",
+							"  pm.expect(jsonData).to.have.property(\"qa_salary_after_12_months\");\r",
+							"});\r",
+							"pm.test('Has data qa salary 1.5 year', function() {\r",
+							"  pm.expect(jsonData).to.have.property( \"qa_salary_after_1.5_year\");\r",
+							"});\r",
+							"pm.test('Has data qa salary 3.5 year ', function() {\r",
+							"  pm.expect(jsonData).to.have.property(\"qa_salary_after_3.5_years\");\r",
+							"});\r",
+							"pm.test('Has data person', function() {\r",
+							"  pm.expect(jsonData).to.have.property(\"person\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Your test StartQaSalary=Salary\", function () {\r",
+							"    pm.expect(jsonData.start_qa_salary).to.eql(+req.salary);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Your test Salary 6 months=Salary*2\", function () {\r",
+							"    pm.expect(jsonData.qa_salary_after_6_months).to.eql(+req.salary*2);\r",
+							"    });\r",
+							"pm.test(\"Your test Salary 12 months=Salary*2.7\", function () {\r",
+							"    pm.expect(jsonData.qa_salary_after_12_months).to.eql(req.salary*2.7);\r",
+							"    });\r",
+							"\r",
+							"pm.test(\"Your test Salary 1.5 year=Salary*3.3\", function () {\r",
+							"    pm.expect(jsonData['qa_salary_after_1.5_year']).to.eql(req.salary*3.3);\r",
+							"    });\r",
+							"\r",
+							"pm.test(\"Your test Salary 3.5 years=Salary*3.8\", function () {\r",
+							"    pm.expect(jsonData['qa_salary_after_3.5_years']).to.eql(req.salary*3.8);\r",
+							"    }); \r",
+							"\r",
+							"pm.test(\"U_Name=SalaryReq\", function () {\r",
+							"    pm.expect(jsonData.person.u_name[1]).to.eql(+req.salary);\r",
+							"    });\r",
+							"pm.test(\"U_Age=AgeReq\", function () {\r",
+							"    pm.expect(jsonData.person.u_age).to.eql(+req.age);\r",
+							"    }); \r",
+							"pm.test(\"u_salary_5_years=Salary*4.2\", function () {\r",
+							"    pm.expect(jsonData.person.u_salary_5_years).to.eql(req.salary*4.2);\r",
+							"    }); \r",
+							"   \r",
+							"   for(let i in jsonData.person) {\r",
+							"        console.log(\"Finally =\"+jsonData.person[i]);\r",
+							"    }\r",
+							"\r",
+							"    // for(let i in person) {\r",
+							"    //     console.log(\"Finally =\", person[i]);\r",
+							"    // };\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "{{name}}",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "{{age}}",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "{{salary}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}user_info_2",
+					"host": [
+						"{{url}}user_info_2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
